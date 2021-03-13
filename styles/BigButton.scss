@@ -1,0 +1,21 @@
+@import './variables';
+
+.bigbutton {
+    margin-top: 100px;
+    cursor: pointer;
+    font-size: 18px;
+    width: 660px;
+    height: 80px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    text-align: center;
+    &:hover {
+        color: #fff;
+        background-color: $black;
+        border-color: $white;
+    }
+        transition: color .2s ease-in-out,
+        background-color .2s ease-in-out,
+        border-color .2s ease-in-out,
+        box-shadow .2s ease-in-out;
+}

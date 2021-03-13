@@ -1,0 +1,38 @@
+@import './variables.scss';
+
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap);
+
+* { font-family: 'Noto Sans KR', sans-serif; }
+
+html {
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body { 
+  margin: 0;
+  background-color: $white;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Noto Sans KR';
+  font-weight: bold;
+  letter-spacing: 0.85px;
+  text-align: center;
+  color: $black;
+}
+h1 {
+  font-size: 48px;
+}
+h2 {
+  font-size: 36px;
+}
+h3 {
+  font-size: 24px;
+}
+
+ul,li,ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

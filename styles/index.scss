@@ -1,0 +1,152 @@
+@import './variables';
+
+.home {
+  position: relative;
+  width: 100%;
+  min-height: 800px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex: 1;
+  
+  & > .text {
+    z-index: 3;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    
+    & > h1 {
+      position: relative;
+      height: 70px;
+      text-align: left;
+      line-height: 1.6;
+      margin: 0 0 40px;
+
+      & > div {
+        position: absolute;
+        z-index: -1;
+        height: 25px;
+        width: 100%;
+        background-color: $primary-color;
+        transform: translateY(-110%);
+      }
+    }
+
+    & > p {
+      font-size: 20px;
+      letter-spacing: 0.35px;
+      margin: 0;
+      line-height: 1.6;
+      color: $grey;
+    }
+  }
+
+  & > .deco {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > .fill {
+      position: absolute;
+      width: 650px;
+      height: 550px;
+      right: 175px;
+      background-color: $primary-color;
+    }
+    & > .stroke {
+      position: absolute;
+      right: 0;
+      width: 600px;
+      height: 650px;
+      border: solid 25px #fff;
+    }
+  }
+}
+
+.downarrow {
+  display: flex;
+  justify-content: center;
+  & > img {
+    margin-top: 90px;
+  }
+}
+
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > h2 {
+    position: relative;
+
+    & > div {
+      position: absolute;
+      z-index: -1;
+      height: 15px;
+      width: 100%;
+      background-color: $sub-color;
+      transform: translateY(-130%);
+    }
+  }
+
+  & > .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 50px;
+    margin-top: 64px;
+  }
+}
+
+.apply {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 800px;
+
+  & > h2 {
+    position: relative;
+
+    & > div {
+      position: absolute;
+      z-index: -1;
+      height: 15px;
+      width: 100%;
+      background-color: $sub-color;
+      transform: translateY(-100%);
+    }
+  }
+  & > .timerwrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: $black;
+
+  }
+}
+
+.qna {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & > h2 {
+    position: relative;
+
+    & > div {
+      position: absolute;
+      z-index: -1;
+      height: 15px;
+      width: 100%;
+      background-color: $sub-color;
+      transform: translateY(-100%);
+    }
+  }
+}
