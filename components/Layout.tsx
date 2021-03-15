@@ -9,7 +9,7 @@ type Props = {
   title?: string
 }
 
-const Layout = ({ children, title = 'V.friends' }: Props) => (
+const Layout = ({ children, title = 'su.it' }: Props) => (
   <div>
     <Head>
       <title>{title}</title>
