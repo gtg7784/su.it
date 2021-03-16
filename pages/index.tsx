@@ -16,8 +16,51 @@ type Props = {
   portfolio: Artwork[]
 }
 
-const IndexPage = ({ portfolio }: Props) => (
+const IndexPage = ({ portfolio }: Props) => {
+  const [timerDays, setTimerDays] = useState(0);
+  const [timerHours, setTimerHours] = useState(0);
+  const [timerMinutes, setTimerMinutes] = useState(0);
+  const [timerSeconds, setTimerSeconds] = useState(0);
 
+  let intervalRef = useRef();
+
+  const startTimer = () => {
+      const countdownDate = new Date('April 30, 2021 00:00:00').getTime();
+
+      const interval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+
+        if (distance < 0) {
+          clearInterval(interval.current);
+        } else {
+          setTimerDays(days);
+          setTimerHours(hours);
+          setTimerMinutes(minutes);
+          setTimerSeconds(seconds);
+        }
+      }, 1000);
+      intervalRef.current = interval;
+  };
+
+  function LeadingZero(num) {
+      return num < 10 ? "0" + num : num;
+  };
+
+  useEffect(()=> {
+      startTimer();
+      return () => {
+          clearInterval(intervalRef.current);
+      };
+  });
+  
+  return (
   <Layout>
     {/* ---------- banner ---------- */}
     <Section id="main" style={{ display: 'flex', flexDirection: 'row', backgroundColor: 'black'}}>
@@ -57,11 +100,29 @@ const IndexPage = ({ portfolio }: Props) => (
     {/* ---------- Apply ---------- */}
     <Section id="apply" style={{ display: 'flex', flexDirection: 'row'}}>
       <div className={styles.apply}>
-        <h2>
-          Apply
-          <div/>
-        </h2>
+        <h2>Apply</h2>
         <div className={styles.timerwrapper}>
+          <div>
+            <div>
+              <h3>{timerDays}</h3>
+              <span>Day</span>
+            </div>
+            <div className={styles.divider}/>
+            <div>
+              <h3>{timerHours}</h3>
+              <span>Hour</span>
+            </div>
+            <div className={styles.divider}/>
+            <div>
+              <h3>{timerMinutes}</h3>
+              <span>Min</span>
+            </div>
+            <div className={styles.divider}/>
+            <div>
+              <h3>{timerSeconds}</h3>
+              <span>Sec</span>
+            </div>
+          </div>
           <BigButton/>
         </div>
       </div>
@@ -76,7 +137,7 @@ const IndexPage = ({ portfolio }: Props) => (
       </div>
     </Section>
   </Layout>
-)
+)}
 
 export default IndexPage;
 
