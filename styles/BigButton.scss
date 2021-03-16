@@ -1,14 +1,15 @@
 @import './variables';
 
 .bigbutton {
-    margin-top: 100px;
     cursor: pointer;
+    margin-top: 100px;
     font-size: 18px;
     width: 660px;
     height: 80px;
     border-radius: 10px;
     border: 2px solid transparent;
     text-align: center;
+
     &:hover {
         color: #fff;
         background-color: $black;

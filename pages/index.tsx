@@ -3,20 +3,18 @@ import axios from 'axios'
 import Layout from 'components/Layout'
 import Section from 'components/Section'
 import Card from 'components/Card'
-import styles from 'styles/index.scss'
-import { Artwork, Award, User } from 'interfaces'
-import { server } from 'config';
 import BigButton from 'components/BigButton'
+import Slider from 'components/Slider'
+import styles from 'styles/index.scss'
+import { Artwork, QnaType } from 'interfaces'
+import { server } from 'config';
 
 type Props = {
-  secondMember: User[]
-  thirdMember: User[]
-  firstAward: Award[]
-  secondAward: Award[]
   portfolio: Artwork[]
+  qna: QnaType[]
 }
 
-const IndexPage = ({ portfolio }: Props) => {
+const IndexPage = ({ portfolio, qna }: Props) => {
   const [timerDays, setTimerDays] = useState(0);
   const [timerHours, setTimerHours] = useState(0);
   const [timerMinutes, setTimerMinutes] = useState(0);
@@ -49,14 +47,10 @@ const IndexPage = ({ portfolio }: Props) => {
       intervalRef.current = interval;
   };
 
-  function LeadingZero(num) {
-      return num < 10 ? "0" + num : num;
-  };
-
   useEffect(()=> {
       startTimer();
       return () => {
-          clearInterval(intervalRef.current);
+        clearInterval(intervalRef.current);
       };
   });
   
@@ -123,7 +117,7 @@ const IndexPage = ({ portfolio }: Props) => {
               <span>Sec</span>
             </div>
           </div>
-          <BigButton/>
+          <BigButton text="지원하기" />
         </div>
       </div>
     </Section>
@@ -134,6 +128,8 @@ const IndexPage = ({ portfolio }: Props) => {
           Q&A
           <div/>
         </h2>
+        <Slider data={qna}/>
+        <BigButton text="질문하기" />
       </div>
     </Section>
   </Layout>
@@ -142,17 +138,11 @@ const IndexPage = ({ portfolio }: Props) => {
 export default IndexPage;
 
 export async function getServerSideProps() {
-  const secondMember = await axios.get(`${server}/api/member/2`)
-  const thirdMember = await axios.get(`${server}/api/member/3`)
-  const firstAward = await axios.get(`${server}/api/award/2019`)
-  const secondAward = await axios.get(`${server}/api/award/2020`)
   const portfolio = await axios.get(`${server}/api/portfolio`)
+  const qna = await axios.get(`${server}/api/qna`)
 
   return { props: {
-    secondMember: secondMember.data,
-    thirdMember: thirdMember.data,
-    firstAward: firstAward.data,
-    secondAward: secondAward.data,
-    portfolio: portfolio.data
+    portfolio: portfolio.data,
+    qna: qna.data
   }}
 }

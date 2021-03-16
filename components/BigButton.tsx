@@ -2,10 +2,11 @@ import React from 'react';
 import styles from 'styles/BigButton.scss';
 
 type Props = {
+  text: string
 }
 
-const BigButton = ({ }: Props) => (
-  <button type="button" className={styles.bigbutton}>지원하기</button>
+const BigButton = ({ text }: Props) => (
+  <button className={styles.bigbutton}>{text}</button>
 )
 
 export default BigButton
