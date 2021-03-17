@@ -1,0 +1,28 @@
+@import 'variables.scss';
+
+.card {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  width: 240px;
+  height: 240px;
+  padding: 30px;
+  display: flex;
+  
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  img {
+    border-radius: 50px;
+  }
+  & > span {
+    font-size: 16px;
+    color: $grey;
+  }
+}

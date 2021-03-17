@@ -1,0 +1,21 @@
+@import './variables';
+
+.fixedbutton {
+    z-index: 10;
+    position: fixed;
+    cursor: pointer;
+    right: 2rem;
+    bottom: 2rem;
+    width: 200px;
+    height: 60px;
+    border: none;
+    border-radius: 50px;
+    color: $black;
+    background-color: $white;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow:(0 0 transparent,0 0 transparent),
+    (0 0 transparent,0 0 transparent),
+    0 20px 25px -5px rgba(0,0,0,0.1),
+    0 10px 10px -5px rgba(0,0,0,0.04);
+}

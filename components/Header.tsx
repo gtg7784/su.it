@@ -2,7 +2,13 @@ import React from 'react'
 import Link from 'next/link'
 import styles from 'styles/header.scss'
 
-const Header = () => (
+type Props = {
+  openModal :Function
+}
+
+const Header = ({ openModal }: Props) => {
+
+  return (
   <header className={styles.header}>
     <Link href="/#main">
       <a>
@@ -20,10 +26,11 @@ const Header = () => (
         <Link href="/#Q&A">Q&A</Link>
       </li>
       <li>
-        <Link href="/">Login</Link>
+        <a onClick={() => openModal()}>Login</a>
       </li>
     </ul>
   </header>
-)
+  )
+}
 
 export default Header;

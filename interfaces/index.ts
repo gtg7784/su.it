@@ -9,13 +9,17 @@ export type Award = {
   name: string
 }
 
-export type Artwork = {
+export type Member = {
   title: string
-  type: string
+  color: string
   description: string
-  specialty?: string
-  // image?: number[]
+  specialty: boolean
   index?: number
+  formsite: string
+  introduce: Array<string>
+  activity: Array<string>
+  rep: object
+  awards:boolean
 }
 
 export interface AwardData {
@@ -24,9 +28,4 @@ export interface AwardData {
 
 export interface UserData {
   [keys: number]: User[];
-}
-
-export type QnaType = {
-  q: string
-  a: string
 }

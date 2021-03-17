@@ -1,57 +1,215 @@
 @import 'variables.scss';
 
-.container {
-  width: 100%;
+.home {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 228px;
+  flex-direction: column;
+  flex: 1;
 
   & > div {
+    & > a {
+      position: absolute;
+      width: 35px;
+      height: 26px;
+      cursor: pointer;
+      top: 170px;
+      left: 70px;
+
+      & > img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
     &:nth-child(1) {
-      width: 500px;
-
-      & > h1 {
-        margin: 0;
-        text-align: left;
-      }
-
-      & > span {
-        font-family: 'Noto Sans KR';
-        font-size: 28px;
-        font-weight: 800;
-        line-height: 1.14;
-        letter-spacing: 0.5px;
-        text-align: left;
-        color: $grey;
-      }
-
-      & > p {
-        margin: 24px 0px;
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 2;
-        letter-spacing: 0.35px;
-        text-align: left;
-        color: $black;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 200px;
+      & > img {
+        width: 120px;
+        height: 120px;
+        border-radius: 10px;
       }
     }
 
     &:nth-child(2) {
-      margin-left: 100px;
-      & > div {
-        width: 640px;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
+      width: 100%;
+      height: 860px;
+      background-color: $light-grey;
+    }
+  }
+}
 
-        & > img {
-          margin: 8px;
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > h2 {
+    position: relative;
+
+    & > div {
+      position: absolute;
+      z-index: -1;
+      height: 15px;
+      width: 100%;
+      transform: translateY(-130%);
+    }
+  }
+  img {
+    width: 160px;
+    height: 160px;
+    margin: 70px 0;
+    border-radius: 10px;
+  }
+  & > p {
+    line-height: 2;
+    text-align: center;
+    font-size: 24px;
+    color: $black;
+  }
+}
+
+.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > h2 {
+    position: relative;
+
+    & > div {
+      position: absolute;
+      z-index: -1;
+      height: 15px;
+      width: 100%;
+      transform: translateY(-110%);
+    }
+  }
+  & > p {
+    line-height: 2;
+    text-align: center;
+    font-size: 24px;
+    color: $black;
+  }
+}
+
+.awards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 1000px;
+
+  & > h2 {
+    position: relative;
+    z-index: 0;
+    & > div {
+      position: absolute;
+      z-index: -1;
+      height: 15px;
+      width: 100%;
+      transform: translateY(-110%);
+    }
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  height: 700px;
+  flex: 1;
+  & > .bar {
+    height: 100%;
+    width: 10px;
+    margin: 0 10px;
+    background-color: $grey;
+    border-radius: 50px;
+  }
+  & > .left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-end;
+
+    & > div {
+      display: flex;
+      flex-direction: row;
+      img {
+      margin-right: 80px;
+      }
+
+      & > div {
+        display: flex;
+        flex-direction: column;
+        margin-right: 100px;
+        & > span {
+          display: flex;
+          font-size: 64px;
+          font-weight: bold;
+          margin-bottom: 50px;
+        }
+        & > p {
+          display: flex;
+          font-size: 24px;
+          margin-bottom: 50px;
         }
       }
+    }
+  }
+  
+
+  & > .right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    & > div {
+      display: flex;
+      flex-direction: row;
+      
       img {
-        object-fit: contain;
+        margin-left: 100px;
+      }
+
+      & > div {
+        display: flex;
+        flex-direction: column;
+        margin-left: 80px;
+
+        & > span {
+          display: flex;
+          font-size: 64px;
+          font-weight: bold;
+          margin-bottom: 50px;
+        }
+        & > p {
+          display: flex;
+          font-size: 24px;
+          margin-bottom: 50px;
+        }
+        & > a {
+          display: flex;
+          text-decoration: none;
+          cursor: pointer;
+          border: solid 2px $black;
+          border-radius: 50px;
+          color: $black;
+          background-color: $white;
+          font-size: 24px;
+          align-self: flex-end;
+          padding: 15px 60px;
+          &:hover {
+            color: $white;
+            background-color: $black;
+            transition: all 0.3s ease-in-out;
+          }
+        }
       }
     }
   }

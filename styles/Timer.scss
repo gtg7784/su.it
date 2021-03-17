@@ -1,0 +1,31 @@
+@import 'variables.scss';
+
+.timerwrapper {
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    color: $white;
+
+    & > .group {
+        width: 150px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        & > .number {
+            font-size: 72px;
+            font-weight: bold;
+        }
+
+        & > .text {
+            font-size: 24px;
+        }
+    }
+    & > .bar {
+        height: 100%;
+        width: 1px;
+        background-color: $white;
+    }
+}

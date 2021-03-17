@@ -1,19 +1,21 @@
 @import './variables';
 
 .bigbutton {
-    cursor: pointer;
     margin-top: 100px;
+    cursor: pointer;
     font-size: 18px;
     width: 660px;
     height: 80px;
     border-radius: 10px;
-    border: 2px solid transparent;
+    border: 2px solid $white;
     text-align: center;
+    background-color: $black;
+    color: $white;
 
     &:hover {
-        color: #fff;
-        background-color: $black;
-        border-color: $white;
+        color: $black;
+        background-color: $white;
+        border-color: $black;
     }
         transition: color .2s ease-in-out,
         background-color .2s ease-in-out,

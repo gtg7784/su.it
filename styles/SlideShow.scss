@@ -1,0 +1,50 @@
+@import './variables';
+
+.slidewrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+
+    & > .qnabox {
+        width: 1020px;
+        height: 270px;
+        border-radius: 20px;
+        box-shadow: 5px 2px 19px rgba(0, 0, 0, 0.08);
+        padding: 15px 70px;
+        & > div {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 50px;
+
+            & > span {
+                font-size: 48px;
+                margin-right: 50px;
+                font-weight: bold;
+            }
+            & > p {
+                display: flex;
+                align-items: flex-end;
+                font-size: 24px;
+                font-weight: bold;
+            }
+            &:nth-child(2) {
+                margin-left: 20px;
+                margin-bottom: 0;
+                & > span {
+                    font-size: 20px;
+                }
+                & > p {
+                    display: flex;
+                    align-items: flex-end;
+                    font-size: 18px;
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+    & > .navbtn {
+            cursor: pointer;
+    }
+}
