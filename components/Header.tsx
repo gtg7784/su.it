@@ -2,13 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import styles from 'styles/header.scss'
 
-type Props = {
-  openModal :Function
-}
-
-const Header = ({ openModal }: Props) => {
-
-  return (
+const Header = ({ openModal }: Function) => (
   <header className={styles.header}>
     <Link href="/#main">
       <a>
@@ -30,7 +24,6 @@ const Header = ({ openModal }: Props) => {
       </li>
     </ul>
   </header>
-  )
-}
+)
 
 export default Header;

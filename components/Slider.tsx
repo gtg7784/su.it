@@ -35,13 +35,13 @@ const Slider = ({ data }: Props) => {
 
 return (
     <div className={styles.slider}>
-      <button onClick={prevSlide}>Previous Slide</button>
+      <button onClick={prevSlide}><img src="/static/prevArrow.svg" alt=""/></button>
       <div>
       <div ref={slideRef}>
         {data.map((item, index) => <Slide data={item} key={index}/>)}
       </div>
       </div>
-      <button onClick={nextSlide}>Next Slide</button>
+      <button onClick={nextSlide}><img src="/static/nextArrow.svg" alt=""/></button>
     </div>
   );
 }

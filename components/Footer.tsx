@@ -94,34 +94,3 @@ const Footer = () => (
 )
 
 export default Footer
-
-
-{/* <div>
-      <img src="/static/logo-sunrin.svg" alt=""/>
-      <div>
-      <Link href="https://sunrint.hs.kr">
-        <a>
-          <img src="/static/sunrin.svg" alt=""/>
-        </a>
-      </Link>
-      <Link href="https://www.facebook.com/profile.php?id=100054473020768">
-        <a>
-          <img src="/static/facebook.svg" alt=""/>
-        </a>
-      </Link>
-      </div>
-    </div>
-    <div>
-        <p>
-          Copyright 2021 선린인터넷고등학교 IT경영과<br/>
-          all rights reserved.
-        </p>
-        <p>
-          서울특별시 용산구 원효로97길 33-4<br/>
-          선린인터넷고등학교
-        </p>
-        <p>
-          디자인  |  김고은<br/>
-          개발  |  고태건
-        </p>
-    </div> */}

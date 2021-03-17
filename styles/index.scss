@@ -37,6 +37,7 @@
     & > p {
       font-size: 20px;
       letter-spacing: 0.35px;
+      margin: 0;
       line-height: 1.6;
       color: $grey;
     }
@@ -120,7 +121,7 @@
       transform: translateY(-100%);
     }
   }
-  & > .timersection {
+  & > .timerwrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -129,6 +130,37 @@
     height: 100%;
     background-color: $black;
 
+    & > div {
+      display: flex;
+      flex-direction: row;
+      
+      & > .divider {
+        width: 3px;
+        height: 148px;
+        background-color: #ffffff;
+        margin: 0 32px;
+      }
+
+      & > div {
+        width: 88px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & > h3 {
+          margin: 0;
+          font-size: 72px;
+          font-weight: 900;
+          color: #ffffff;
+        }
+
+        & > span {
+          font-size: 24px;
+          font-weight: 500;
+          color: #ffffff;
+        }
+      }
+    }
   }
 }
 
@@ -136,7 +168,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  
   & > h2 {
     position: relative;
 
@@ -148,13 +179,5 @@
       background-color: $sub-color;
       transform: translateY(-100%);
     }
-  }
-
-  & > .slidecontainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100%;
   }
 }

@@ -1,23 +1,23 @@
-import React,{useState} from 'react'
+import React, { useEffect,useRef,useState } from 'react'
 import axios from 'axios'
 import Layout from 'components/Layout'
 import Section from 'components/Section'
-import Card from 'components/Card'
-import styles from 'styles/index.scss'
-import { Member } from 'interfaces'
-import { server } from 'config';
+import Card from 'components/Card/Card'
 import BigButton from 'components/BigButton'
-import Timer from 'components/Timer'
-import SlideShow from 'components/SlideShow'
-import QnAModal from 'components/QnAModal'
-import ApplyModal from 'components/ApplyModal'
-import FixedButton from 'components/FixedButton'
+import Slider from 'components/Slider'
+import styles from 'styles/index.scss'
+import { Member, QnaType } from 'interfaces'
+import { server } from 'config';
+import ApplyModal from 'components/Modal/ApplyModal'
+import QnAModal from 'components/Modal/QnAModal'
 
 type Props = {
   portfolio: Member[]
+  qna: QnaType[]
 }
 
-const IndexPage = ({ portfolio }: Props) => {
+const IndexPage = ({ portfolio, qna }: Props) => {
+
   const [isQnAModal, setIsQnAModal] = useState(false);
   const isQnAopenModal = () => {setIsQnAModal(true)};
   const isQnAcloseModal = () => {setIsQnAModal(false)};
@@ -26,9 +26,49 @@ const IndexPage = ({ portfolio }: Props) => {
   const isApplyopenModal = () => {setIsApplyModal(true)};
   const isApplycloseModal = () => {setIsApplyModal(false)};
 
+  const [timerDays, setTimerDays] = useState(0);
+  const [timerHours, setTimerHours] = useState(0);
+  const [timerMinutes, setTimerMinutes] = useState(0);
+  const [timerSeconds, setTimerSeconds] = useState(0);
+
+  let intervalRef = useRef();
+
+  const startTimer = () => {
+      const countdownDate = new Date('April 30, 2021 00:00:00').getTime();
+
+      const interval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+
+        if (distance < 0) {
+          clearInterval(interval.current);
+        } else {
+          setTimerDays(days);
+          setTimerHours(hours);
+          setTimerMinutes(minutes);
+          setTimerSeconds(seconds);
+        }
+      }, 1000);
+      intervalRef.current = interval;
+  };
+
+  useEffect(()=> {
+      startTimer();
+      return () => {
+        clearInterval(intervalRef.current);
+      };
+  });
+  
   return (
   <Layout>
-    <FixedButton openModal={isApplyopenModal}></FixedButton>
+    <QnAModal portfolio={portfolio} openModal={isQnAModal} closeModal={isQnAcloseModal}/>
+    <ApplyModal portfolio={portfolio} openModal={isApplyModal} closeModal={isApplycloseModal} />
     {/* ---------- banner ---------- */}
     <Section id="main" style={{ display: 'flex', flexDirection: 'row', backgroundColor: 'black'}}>
       <div className={styles.home}>
@@ -71,10 +111,29 @@ const IndexPage = ({ portfolio }: Props) => {
           Apply
           <div/>
         </h2>
-        <div className={styles.timersection}>
-          <Timer date='March 17 2021 12:50:00'/>
+        <div className={styles.timerwrapper}>
+          <div>
+            <div>
+              <h3>{timerDays}</h3>
+              <span>Day</span>
+            </div>
+            <div className={styles.divider}/>
+            <div>
+              <h3>{timerHours}</h3>
+              <span>Hour</span>
+            </div>
+            <div className={styles.divider}/>
+            <div>
+              <h3>{timerMinutes}</h3>
+              <span>Min</span>
+            </div>
+            <div className={styles.divider}/>
+            <div>
+              <h3>{timerSeconds}</h3>
+              <span>Sec</span>
+            </div>
+          </div>
           <BigButton text="지원하기" openModal={isApplyopenModal}/>
-          <ApplyModal portfolio={portfolio} openModal={isApplyModal} closeModal={isApplycloseModal} />
         </div>
       </div>
     </Section>
@@ -85,23 +144,21 @@ const IndexPage = ({ portfolio }: Props) => {
           Q&A
           <div/>
         </h2>
-        <div className={styles.slidecontainer}>
-          <SlideShow />
-          <BigButton text="질문하기" openModal={isQnAopenModal}/>
-          <QnAModal portfolio={portfolio} openModal={isQnAModal} closeModal={isQnAcloseModal}/>
-        </div>
+        <Slider data={qna}/>
+        <BigButton text="질문하기" openModal={isQnAopenModal}/>
       </div>
     </Section>
   </Layout>
-  )
-}
+)}
 
 export default IndexPage;
 
 export async function getServerSideProps() {
   const portfolio = await axios.get(`${server}/api/portfolio`)
+  const qna = await axios.get(`${server}/api/qna`)
 
   return { props: {
-    portfolio: portfolio.data
+    portfolio: portfolio.data,
+    qna: qna.data
   }}
 }

@@ -9,10 +9,11 @@ import styles from 'styles/detail.scss'
 import 'styles/global.scss'
 
 type Props = {
-  data: Member
+  data: Member[]
 }
 
-const MemberPage = ({ data }: Props) => {
+const IndividualPage = ({ data }: Props) => {
+
   return (
     <Layout>
       <Section>
@@ -50,6 +51,7 @@ const MemberPage = ({ data }: Props) => {
           <p>{data.activity.map((contents) => <>{contents}<br/></>)}</p>
         </div>
       </Section>
+      
       {data.awards ?
         <Section>
           <div className={styles.awards} style={{backgroundColor:`${data.color}`}}>
@@ -60,6 +62,7 @@ const MemberPage = ({ data }: Props) => {
           </div>
         </Section>
       :null}
+
       <Section style={{minHeight:'700px',paddingBottom:'200px'}}>
         <div className={styles.info}>
           <div className={styles.left}>
@@ -98,7 +101,7 @@ const MemberPage = ({ data }: Props) => {
   )
 }
 
-export default MemberPage;
+export default IndividualPage;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const {id} = ctx.query;

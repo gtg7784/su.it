@@ -29,3 +29,8 @@ export interface AwardData {
 export interface UserData {
   [keys: number]: User[];
 }
+
+export type QnaType = {
+  q: string
+  a: string
+}
